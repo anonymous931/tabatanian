@@ -48,3 +48,8 @@
 + メイン機能実装：3/7 - 4/10
 + β版をRUNTEQ内リリース（MVP）：4/10 〆切
 + 本番リリース：4月末
+
+### ■ 画面遷移図
+
+Figma:
+https://www.figma.com/file/hQEh0mx6y4okgefI63wG7D/tabatanian?node-id=0%3A1&t=SRjAQjWkvcQoeI0G-1
