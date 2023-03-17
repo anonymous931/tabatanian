@@ -23,6 +23,7 @@ gem 'rails-i18n'
 gem 'enum_help'
 gem 'faker'
 gem 'annotate'
+gem 'draper'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
