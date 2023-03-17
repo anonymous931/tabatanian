@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'faker'
+gem 'annotate'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -34,6 +35,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'solargraph'
 end
 
 group :test do
