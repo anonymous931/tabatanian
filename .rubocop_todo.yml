@@ -38,6 +38,10 @@ Layout/TrailingEmptyLines:
   Exclude:
     - 'Gemfile'
 
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'config/initializers/sorcery.rb'
+
 Layout/HashAlignment:
   Exclude:
     - 'lib/tasks/auto_annotate_models.rake'
@@ -90,6 +94,7 @@ Style/StringLiterals:
     - 'config/initializers/backtrace_silencers.rb'
     - 'config/puma.rb'
     - 'config/spring.rb'
+    - 'config/initializers/sorcery.rb'
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).

@@ -24,6 +24,7 @@ gem 'enum_help'
 gem 'faker'
 gem 'annotate'
 gem 'draper'
+gem 'sorcery'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
