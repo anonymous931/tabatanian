@@ -38,6 +38,10 @@ Layout/TrailingEmptyLines:
   Exclude:
     - 'Gemfile'
 
+Layout/HashAlignment:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
 # AllowedMethods: refine
@@ -51,6 +55,10 @@ Rails/FilePath:
   Exclude:
     - 'config/application.rb'
     - 'config/environments/development.rb'
+
+Rails/RakeEnvironment:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -89,3 +97,9 @@ Style/StringLiterals:
 # SupportedStyles: percent, brackets
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
