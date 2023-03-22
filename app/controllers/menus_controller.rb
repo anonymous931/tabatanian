@@ -3,7 +3,7 @@ class MenusController < ApplicationController
 
   # GET /menus or /menus.json
   def index
-    @menus = Menu.all.includes(:user).order(created_at: :desc)
+    @menus = Menu.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   # GET /menus/1 or /menus/1.json
