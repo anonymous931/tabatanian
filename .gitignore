@@ -38,3 +38,5 @@ yarn-debug.log*
 .yarn-integrity
 gibo 2.2.8 by Simon Whitaker
 https://github.com/simonwhitaker/gibo
+
+.DS_Store

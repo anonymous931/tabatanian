@@ -1,31 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <!-- 検索フォーム -->
+      <form>
+        <div class="input-group mb-3">
+          <input class="form-control" placeholder="検索ワード" type="search" />
+          <div class="input-group-append">
+            <input type="submit" value="検索" class="btn btn-primary" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 
-<h1>Menus</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Thumbnail</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr>
-        <td><%= menu.title %></td>
-        <td><%= menu.content %></td>
-        <td><%= menu.thumbnail %></td>
-        <td><%= link_to 'Show', menu %></td>
-        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Menu', new_menu_path %>
+  <!-- メニュー一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @menus.present? %>
+          <%= render @menus %>
+        <% else %>
+          <p>メニューがありません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
