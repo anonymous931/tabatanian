@@ -20,9 +20,9 @@
 #
 FactoryBot.define do
   factory :menu do
-    user { nil }
-    title { "MyString" }
-    content { "MyText" }
-    thumbnail { "MyString" }
+    association :user
+    sequence { |n| "title_#{n}" }
+    content { "content" }
+    thumbnail { "sample.jpg" }
   end
 end
