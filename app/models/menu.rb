@@ -19,5 +19,6 @@
 #  user_id  (user_id => users.id)
 #
 class Menu < ApplicationRecord
+  mount_uploader :thumbnail, ThumbnailUploader
   belongs_to :user
 end
