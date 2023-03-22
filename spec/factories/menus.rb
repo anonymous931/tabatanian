@@ -21,7 +21,7 @@
 FactoryBot.define do
   factory :menu do
     association :user
-    sequence { |n| "title_#{n}" }
+    sequence(:title) { |n| "title_#{n}" }
     content { "content" }
     thumbnail { "sample.jpg" }
   end

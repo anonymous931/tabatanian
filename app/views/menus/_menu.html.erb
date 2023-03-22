@@ -1,20 +1,17 @@
-<div class="col-sm-12 col-lg-4 mb-3">
+<div class="col-sm-6 col-md-4 col-lg-3 mb-3">
   <div id="menu-id-<%= menu.id %>">
     <div class="card">
-      <%= image_tag 'sample.png', class: 'card-img-top', size: '300x200' %>
+      <%= image_tag 'sample.jpg', class: 'card-img-top', size: '300x200' %>
       <div class="card-body">
         <h4 class="card-title">
           <a href="#">
             <%= menu.title %>
           </a>
         </h4>
-        <div class='mr10 float-right'>
-          <a href="#"><%= icon 'fas', 'trash', class: 'pr-1' %></a>
-          <a href="#"><%= icon 'fa', 'pen' %></a>
+        <div class='mr-10 float-right'>
         </div>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <%= icon 'far', 'user' %>
             <%= menu.user.name %>
           </li>
         </ul>
