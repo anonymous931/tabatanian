@@ -19,8 +19,8 @@
 #
 FactoryBot.define do
   factory :work do
-    menu { nil }
-    title { "MyString" }
-    content { "MyText" }
+    association :menu
+    sequence(:title) { |n| "title_#{n}" }
+    content { "content" }
   end
 end
