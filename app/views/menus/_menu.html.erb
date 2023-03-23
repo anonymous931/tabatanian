@@ -1,0 +1,24 @@
+<div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+  <div id="menu-id-<%= menu.id %>">
+    <div class="card">
+      <%= image_tag 'sample.jpg', class: 'card-img-top', size: '300x200' %>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#">
+            <%= menu.title %>
+          </a>
+        </h4>
+        <div class='mr10 float-right'>
+          <a href="#"><i class="fa-solid fa-trash" style="color: #1e2471;"></i></a>
+          <a href="#"><i class="fa-solid fa-pen" style="color: #1e2471;"></i></a>
+        </div>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <i class="fa-solid fa-user" style="color: #1e2471;"></i>
+            <%= menu.user.name %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

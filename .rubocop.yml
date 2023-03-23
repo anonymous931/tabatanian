@@ -42,6 +42,10 @@ Style/SymbolArray:
 Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: false
 
+# %w( jpg jpeg png )などの書き方を許可する
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
 # クラスにコメントを残さない
 Style/Documentation:
   Enabled: false

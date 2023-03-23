@@ -25,6 +25,10 @@ gem 'faker'
 gem 'annotate'
 gem 'draper'
 gem 'sorcery'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'kaminari'
+gem 'ransack'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
