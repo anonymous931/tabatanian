@@ -20,7 +20,14 @@
 #
 class Menu < ApplicationRecord
   mount_uploader :thumbnail, ThumbnailUploader
+
   belongs_to :user
+  has_many :works, dependent: :destroy
+
+  accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
+
+  validates :title, presence: true, length: { maximum: 25 }
+  validates :content, length: { maximum: 200 }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w(title content)
