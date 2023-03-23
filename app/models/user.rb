@@ -29,4 +29,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
 
   enum role: { general: 0, admin: 1 }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w(name)
+  end
 end
