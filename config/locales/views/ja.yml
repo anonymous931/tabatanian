@@ -1,0 +1,28 @@
+ja:
+  defaults:
+    login: ログイン
+    register: 登録
+    logout: ログアウト
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  user_sessions:
+    new:
+      title: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+  menus:
+    index:
+      title: メニュー一覧
+    new:
+      title: メニュー作成
+    bookmarks:
+      title: ブックマーク一覧
+  profiles:
+    show:
+      title: プロフィール

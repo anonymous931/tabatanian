@@ -20,11 +20,11 @@ class MenusController < ApplicationController
 
   # POST /menus or /menus.json
   def create
-    @menu = Menu.new(menu_params)
+    @menu = current_user.menus.build(menu_params)
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to menu_url(@menu), notice: 'Menu was successfully created.' }
+        format.html { redirect_to menu_url(@menu), success: t('defaults.message.created', item: Menu.model_name.human) }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +65,7 @@ class MenusController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def menu_params
-    params.require(:menu).permit(:title, :content, :thumbnail)
+    params.require(:menu).permit(:title, :content, :thumbnail, :thumbnai_cache,
+                                  works_attributes: [:id, :title, :content, :_destroy])
   end
 end
