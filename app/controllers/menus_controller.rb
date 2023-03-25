@@ -25,27 +25,21 @@ class MenusController < ApplicationController
   def create
     @menu = current_user.menus.build(menu_params)
 
-    respond_to do |format|
-      if @menu.save
-        format.html { redirect_to menu_url(@menu), success: t('defaults.message.created', item: Menu.model_name.human) }
-        format.json { render :show, status: :created, location: @menu }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.save
+      redirect_to menu_path(@menu), success: t('defaults.message.created', item: Menu.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.message.not_created', item: Menu.model_name.human)
+      render :new
     end
   end
 
   # PATCH/PUT /menus/1 or /menus/1.json
   def update
-    respond_to do |format|
-      if @menu.update(menu_params)
-        format.html { redirect_to menu_url(@menu), notice: 'Menu was successfully updated.' }
-        format.json { render :show, status: :ok, location: @menu }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.update(menu_params)
+      redirect_to menu_path(@menu), success: t('defaults.message.updated', item: Menu.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.message.not_updated', item: Menu.model_name.human)
+      render :edit
     end
   end
 
