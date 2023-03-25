@@ -36,6 +36,15 @@
         </div>
 
         <div class="details">
+
+          <hr>
+          <%# フォームを追加する場所。%>
+          <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
+          <div id="work-forms">
+            <%= form.fields_for :works do |work| %>
+              <% render 'work_fields', work: work %>
+            <% end %>
+          </div>
           <%# トラックの追加フォームをするボタン %>
           <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
           <%= link_to_add_association 'トラックの追加',
@@ -50,10 +59,11 @@
                                         # フォームを追加する場所の指定
                                         association_insertion_node: '#work-forms',
                                         # フォームを前後どの位置に追加するか。(初期値: before)
-                                        association_insertion_method: 'before'
+                                        association_insertion_method: 'after'
                                       },
                                       # フォームオブジェクトを指定する場合(初期値 : f)
                                       form_name: 'work',
+                                      class: 'float-end',
                                       # 部分テンプレートに渡す変数があれば記述
                                       render_options: {
                                         locals: {
@@ -61,16 +71,6 @@
                                         }
                                       }
           %>
-        
-          <hr>
-        
-          <%# フォームを追加する場所。%>
-          <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
-          <div id="work-forms">
-            <%= form.fields_for :works do |work| %>
-              <% render 'work_fields', work: work %>
-            <% end %>
-          </div>
         </div>
 
         <div class="actions">
