@@ -1,7 +1,8 @@
 class ThumbnailUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  process resize_to_fit: [300, 200]
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -21,7 +22,7 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   def default_url
-    sample.jpg
+    'sample.jpg'
   end
 
   # Process files as they are uploaded:
