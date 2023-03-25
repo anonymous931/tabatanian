@@ -5,8 +5,7 @@
         <%= @menu.title %>
       </h3>
     </div>
-    <div class="col-auto"></div>
-    <div class="col-3 col-auto">
+    <div class="col d-flex justify-content-end">
       <button type="button" class="btn btn-outline-success">トレーニング開始</button>
     </div>
     <p class="mt-4 mb-4">
@@ -14,11 +13,11 @@
       <%= @menu.content %>
     </p>
     <div class="row justify-content-center">
-      <div class="col-8">
+      <div class="col-10">
         <%= render partial: 'work', collection: @works %>
       </div>
     </div>
-    <% if current_user == @menu.user %>
+    <% if @menu.user == current_user %>
       <div class="float-end">
         <%= link_to '編集', edit_menu_path(@menu) %>
         <%= link_to '削除', menu_path(@menu), method: :delete, data: { confirm: '本当に削除しますか？'} %>
