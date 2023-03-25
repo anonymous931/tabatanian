@@ -50,12 +50,8 @@ class MenusController < ApplicationController
 
   # DELETE /menus/1 or /menus/1.json
   def destroy
-    @menu.destroy
-
-    respond_to do |format|
-      format.html { redirect_to menus_url, notice: 'Menu was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @menu.destroy!
+    redirect_to menus_path, success: t('defaults.message.delete', item: Menu.model_name.human)
   end
 
   private
