@@ -22,3 +22,11 @@ end
     content: "本文#{index}"
   )
 end
+
+100.times do |index|
+  Work.create(
+    menu: Menu.offset(rand(Menu.count)).first,
+    title: "ワーク#{index}",
+    content: Faker::Address.full_address
+  )
+end

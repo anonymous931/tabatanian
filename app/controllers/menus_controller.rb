@@ -8,7 +8,9 @@ class MenusController < ApplicationController
   end
 
   # GET /menus/1 or /menus/1.json
-  def show; end
+  def show
+    @works = @menu.works
+  end
 
   # GET /menus/new
   def new

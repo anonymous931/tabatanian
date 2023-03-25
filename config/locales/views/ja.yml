@@ -21,6 +21,8 @@ ja:
       title: メニュー一覧
     new:
       title: メニュー作成
+    show:
+      title: メニュー詳細
     bookmarks:
       title: ブックマーク一覧
   profiles:
