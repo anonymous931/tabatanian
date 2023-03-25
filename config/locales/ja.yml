@@ -21,6 +21,9 @@ ja:
       work:
         title: ワーク名
         content: ワーク詳細
+      menu/works:
+        title: ワーク名
+        content: ワーク詳細
 
   enums:
     user:
