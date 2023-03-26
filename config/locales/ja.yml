@@ -3,6 +3,7 @@ ja:
     # User.model_name.human
     models:
       user: ユーザー
+      menu: メニュー
     # User.human_attributes_name(:name)
     attributes:
       id: ID
@@ -13,6 +14,16 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+      menu:
+        title: メニュータイトル
+        content: メニュー詳細
+        thumbnail: サムネイル
+      work:
+        title: ワーク名
+        content: ワーク詳細
+      menu/works:
+        title: ワーク名
+        content: ワーク詳細
 
   enums:
     user:

@@ -1,27 +1,72 @@
-<%= form_with(model: menu) do |form| %>
-  <% if menu.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <%= form_with model: menu do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <ul>
-        <% menu.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :content %>
+          <%= f.text_area :content, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :thumbnail %>
+          <%= f.file_field :thumbnail, class: 'form-control mb-3', accept: 'image/*' %>
+          <%= f.hidden_field :thumbnail_cache %>
+        </div>
+        <div class='mt-3 mb-3'>
+          <%= image_tag menu.thumbnail.url,
+                        id: 'preview',
+                        size: '300x200' %>
+        </div>
+
+        <div class="details">
+
+          <hr>
+          <%# フォームを追加する場所。%>
+          <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
+          <div id="work-forms">
+            <%= f.fields_for :works do |work| %>
+              <% render 'work_fields', work: work %>
+            <% end %>
+          </div>
+          <%# トラックの追加フォームをするボタン %>
+          <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
+          <%= link_to_add_association 'ワークの追加',
+                                      # form_withのformタグ変数
+                                      f,
+                                      # フォームのデータを追加するモデル名
+                                      :works,
+                                      # 追加するフォームの部分テンプレート
+                                      partial: "work_fields",
+                                      # オプション
+                                      data: {
+                                        # フォームを追加する場所の指定
+                                        association_insertion_node: '#work-forms',
+                                        # フォームを前後どの位置に追加するか。(初期値: before)
+                                        association_insertion_method: 'after'
+                                      },
+                                      # フォームオブジェクトを指定する場合(初期値 : f)
+                                      form_name: 'work',
+                                      class: 'float-end',
+                                      # 部分テンプレートに渡す変数があれば記述
+                                      render_options: {
+                                        locals: {
+                                          # 通常の部分テンプレートと同じ記述
+                                        }
+                                      }
+          %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

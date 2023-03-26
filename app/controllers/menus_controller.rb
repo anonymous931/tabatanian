@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: %i[ show edit update destroy ]
+  before_action :require_login, only: %i[ new edit create update destroy ]
+  before_action :set_menu, only: %i[ edit update destroy ]
 
   # GET /menus or /menus.json
   def index
@@ -8,7 +9,10 @@ class MenusController < ApplicationController
   end
 
   # GET /menus/1 or /menus/1.json
-  def show; end
+  def show
+    @menu = Menu.find(params[:id])
+    @works = @menu.works
+  end
 
   # GET /menus/new
   def new
@@ -20,51 +24,42 @@ class MenusController < ApplicationController
 
   # POST /menus or /menus.json
   def create
-    @menu = Menu.new(menu_params)
+    @menu = current_user.menus.build(menu_params)
 
-    respond_to do |format|
-      if @menu.save
-        format.html { redirect_to menu_url(@menu), notice: 'Menu was successfully created.' }
-        format.json { render :show, status: :created, location: @menu }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.save
+      redirect_to menu_path(@menu), success: t('defaults.message.created', item: Menu.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.message.not_created', item: Menu.model_name.human)
+      render :new
     end
   end
 
   # PATCH/PUT /menus/1 or /menus/1.json
   def update
-    respond_to do |format|
-      if @menu.update(menu_params)
-        format.html { redirect_to menu_url(@menu), notice: 'Menu was successfully updated.' }
-        format.json { render :show, status: :ok, location: @menu }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.update(menu_params)
+      redirect_to menu_path(@menu), success: t('defaults.message.updated', item: Menu.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.message.not_updated', item: Menu.model_name.human)
+      render :edit
     end
   end
 
   # DELETE /menus/1 or /menus/1.json
   def destroy
-    @menu.destroy
-
-    respond_to do |format|
-      format.html { redirect_to menus_url, notice: 'Menu was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @menu.destroy!
+    redirect_to menus_path, success: t('defaults.message.delete', item: Menu.model_name.human)
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_menu
-    @menu = Menu.find(params[:id])
+    @menu = current_user.menus.find_by(id: params[:id])
+    redirect_to root_path, danger: t('defaults.message.stop_access') if @menu.nil?
   end
 
   # Only allow a list of trusted parameters through.
   def menu_params
-    params.require(:menu).permit(:title, :content, :thumbnail)
+    params.require(:menu).permit(:title, :content, :thumbnail, :thumbnai_cache, works_attributes: [:id, :title, :content, :_destroy])
   end
 end

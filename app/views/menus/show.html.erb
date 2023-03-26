@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @menu.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @menu.content %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @menu.thumbnail %>
-</p>
-
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h3>
+        <%= @menu.title %>
+      </h3>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <button type="button" class="btn btn-outline-success">トレーニング開始</button>
+    </div>
+    <p class="mt-4 mb-4">
+      <strong>解説：</strong>
+      <%= @menu.content %>
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <%= render partial: 'work', collection: @works %>
+      </div>
+    </div>
+    <% if @menu.user == current_user %>
+      <div class="float-end">
+        <%= link_to '編集', edit_menu_path(@menu) %>
+        <%= link_to '削除', menu_path(@menu), method: :delete, data: { confirm: '本当に削除しますか？'} %>
+      </div>
+    <% end %>
+  </div>
+</div>

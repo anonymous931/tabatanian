@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_21_074514) do
+ActiveRecord::Schema.define(version: 2023_03_23_075944) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -34,5 +34,15 @@ ActiveRecord::Schema.define(version: 2023_03_21_074514) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "works", force: :cascade do |t|
+    t.integer "menu_id", null: false
+    t.string "title", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_works_on_menu_id"
+  end
+
   add_foreign_key "menus", "users"
+  add_foreign_key "works", "menus"
 end

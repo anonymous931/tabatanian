@@ -1,0 +1,16 @@
+<div class="nested-fields">
+  <div class="form-group">
+    <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+    <%= work.label :title %>
+    <%= work.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+    <%= work.label :content %>
+    <%= work.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= link_to_remove_association "ワークを削除", work %>
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,14 @@
+<div class="accordion accordion-flush my-4" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-<%= work.id %>">
+      <button class="accordion-button py-4 collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-<%= work.id %>" aria-expanded="false" aria-controls="collapse-<%= work.id %>">
+        <%= work_counter + 1 %>.
+        <%= work.title %>
+      </button>
+    </h2>
+    <div id="collapse-<%= work.id %>" class="accordion-collapse collapse border" aria-labelledby="heading-<%= work.id %>" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        詳細：<%= work.content %>
+      </div>
+    </div>
+  </div>
