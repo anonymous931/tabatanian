@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: %i[ show edit update destroy ]
   before_action :require_login, only: %i[ new edit create update destroy ]
+  before_action :set_menu, only: %i[ edit update destroy ]
 
   # GET /menus or /menus.json
   def index
@@ -10,6 +10,7 @@ class MenusController < ApplicationController
 
   # GET /menus/1 or /menus/1.json
   def show
+    @menu = Menu.find(params[:id])
     @works = @menu.works
   end
 
@@ -53,7 +54,8 @@ class MenusController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_menu
-    @menu = Menu.find(params[:id])
+    @menu = current_user.menus.find_by(id: params[:id])
+    redirect_to root_path, danger: t('defaults.message.stop_access') if @menu.nil?
   end
 
   # Only allow a list of trusted parameters through.

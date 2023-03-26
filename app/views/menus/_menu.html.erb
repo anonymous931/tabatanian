@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
   <div id="menu-id-<%= menu.id %>">
     <div class="card">
-      <%= link_to edit_menu_path(menu.id) do %>
+      <%= link_to menu_path(menu.id) do %>
         <%= image_tag menu.thumbnail.url, class: 'card-img-top', size: '300x200' %>
       <% end %>
       <div class="card-body">
