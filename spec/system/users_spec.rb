@@ -12,7 +12,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'メールアドレス', with: 'email@example.com'
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
-          click_button '登録する'
+          click_button '登録'
           expect(page).to have_content 'ユーザー登録が成功しました'
           expect(current_path).to eq root_path
         end
@@ -25,8 +25,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'メールアドレス', with: 'email@example.com'
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
-          click_button '登録する'
-          expect(page).to have_content '1 error prohibited this user from being saved'
+          click_button '登録'
           expect(page).to have_content '名前を入力してください'
           expect(current_path).to eq users_path
         end
@@ -39,8 +38,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'メールアドレス', with: ''
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
-          click_button '登録する'
-          expect(page).to have_content '1 error prohibited this user from being saved'
+          click_button '登録'
           expect(page).to have_content 'メールアドレスを入力してください'
           expect(current_path).to eq users_path
         end
@@ -54,8 +52,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'メールアドレス', with: existed_user.email
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
-          click_button '登録する'
-          expect(page).to have_content '1 error prohibited this user from being saved'
+          click_button '登録'
           expect(page).to have_content 'メールアドレスはすでに存在します'
           expect(current_path).to eq users_path
           expect(page).to have_field 'メールアドレス', with: existed_user.email
@@ -69,8 +66,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'メールアドレス', with: 'email@example.com'
           fill_in 'パスワード', with: ''
           fill_in 'パスワード確認', with: ''
-          click_button '登録する'
-          expect(page).to have_content '2 error prohibited this user from being saved'
+          click_button '登録'
           expect(page).to have_content 'パスワードは3文字以上で入力してください'
           expect(page).to have_content 'パスワード確認を入力してください'
           expect(current_path).to eq users_path

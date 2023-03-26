@@ -21,5 +21,23 @@
 require 'rails_helper'
 
 RSpec.describe Menu, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションの確認' do
+    it '正常に登録される' do
+      menu = build(:menu)
+      expect(menu).to be_valid
+      expect(menu.errors).to be_empty
+    end
+
+    it 'タイトルが記載されていない場合' do
+      menu_without_title = build(:menu, title: "")
+      expect(menu_without_title).to be_invalid
+      expect(menu_without_title.errors[:title]).to eq ["を入力してください"]
+    end
+
+    it 'タイトルが25文字を超える場合' do
+      menu_without_title = build(:menu, title: "12345678901234567890123456")
+      expect(menu_without_title).to be_invalid
+      expect(menu_without_title.errors[:title]).to eq ["は25文字以内で入力してください"]
+    end
+  end
 end
