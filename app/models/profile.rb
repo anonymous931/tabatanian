@@ -3,7 +3,7 @@
 # Table name: profiles
 #
 #  id            :integer          not null, primary key
-#  deadline      :datetime
+#  deadline      :date
 #  fat           :float
 #  introduction  :text
 #  target_fat    :float

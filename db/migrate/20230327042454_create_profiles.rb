@@ -7,7 +7,7 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.float :fat
       t.float :target_weight
       t.float :target_fat
-      t.datetime :deadline
+      t.date :deadline
 
       t.timestamps
     end

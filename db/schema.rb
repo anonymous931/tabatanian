@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2023_03_27_042454) do
     t.float "fat"
     t.float "target_weight"
     t.float "target_fat"
-    t.datetime "deadline"
+    t.date "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"

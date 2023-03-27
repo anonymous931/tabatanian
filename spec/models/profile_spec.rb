@@ -3,7 +3,7 @@
 # Table name: profiles
 #
 #  id            :integer          not null, primary key
-#  deadline      :datetime
+#  deadline      :date
 #  fat           :float
 #  introduction  :text
 #  target_fat    :float
@@ -24,5 +24,11 @@
 require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションの確認' do
+    it '正常に登録される' do
+      profile = build(:profile)
+      expect(profile).to be_valid
+      expect(profile.errors).to be_empty
+    end
+  end
 end

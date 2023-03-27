@@ -3,7 +3,7 @@
 # Table name: profiles
 #
 #  id            :integer          not null, primary key
-#  deadline      :datetime
+#  deadline      :date
 #  fat           :float
 #  introduction  :text
 #  target_fat    :float
@@ -23,12 +23,12 @@
 #
 FactoryBot.define do
   factory :profile do
-    user { nil }
+    association :user
     introduction { "MyText" }
-    weight { 1.5 }
-    fat { 1.5 }
-    target_weight { 1.5 }
-    target_fat { 1.5 }
-    deadline { "2023-03-27 13:24:54" }
+    weight { 58.5 }
+    fat { 17.5 }
+    target_weight { 55.0 }
+    target_fat { 15.0 }
+    deadline { "2023-03-27" }
   end
 end
