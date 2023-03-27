@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_23_075944) do
+ActiveRecord::Schema.define(version: 2023_03_27_042454) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 2023_03_23_075944) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_menus_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.text "introduction"
+    t.float "weight"
+    t.float "fat"
+    t.float "target_weight"
+    t.float "target_fat"
+    t.datetime "deadline"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,5 +57,6 @@ ActiveRecord::Schema.define(version: 2023_03_23_075944) do
   end
 
   add_foreign_key "menus", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "works", "menus"
 end
