@@ -13,6 +13,7 @@ import '@fortawesome/fontawesome-free/js/all';
 
 require("jquery")
 require("@nathanvda/cocoon")
+require("shared/preview");
 
 Rails.start()
 Turbolinks.start()

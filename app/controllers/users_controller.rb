@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @profile = current_user.profile
+    @user.build_profile if @user.profile.nil?
   end
 
   # POST /users or /users.json
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     if @user.update(user_params)
-      redirect_to user_url(@user), success: t('defaults.message.created', item: Profile.model_name.human)
+      redirect_to root_url, success: t('defaults.message.created', item: Profile.model_name.human)
     else
       flash.now[:danger] = t('defaults.message.not_created', item: Profile.model_name.human)
       render :edit
@@ -53,6 +53,6 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :avatar_cache,
-                                profile_attributes: [:id, :introduction, :weight, :fat, :target_weght, :target_fat, :deadline, :_destroy])
+                                profile_attributes: [:id, :introduction, :weight, :fat, :target_weight, :target_fat, :deadline, :_destroy])
   end
 end

@@ -4,6 +4,8 @@ ja:
     models:
       user: ユーザー
       menu: メニュー
+      profile: プロフィール
+      work: ワーク
     # User.human_attributes_name(:name)
     attributes:
       id: ID
@@ -14,6 +16,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+        avatar: プロフィール画像
       menu:
         title: メニュータイトル
         content: メニュー詳細
@@ -24,6 +27,8 @@ ja:
       menu/works:
         title: ワーク名
         content: ワーク詳細
+      profile:
+        introduction: 自己紹介
 
   enums:
     user:
