@@ -30,6 +30,10 @@ ja:
       profile:
         introduction: 自己紹介
 
+  time:
+    formats:
+      default: "%m月%d日"
+
   enums:
     user:
       role:

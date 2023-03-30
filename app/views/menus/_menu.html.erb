@@ -23,7 +23,7 @@
         <ul class="list-inline">
           <li class="list-inline-item">
             <i class="fa-solid fa-user" style="color: #1e2471;"></i>
-            <%= menu.user.name %>
+            <%= link_to menu.user.name, user_path(menu.user.id) %>
           </li>
         </ul>
       </div>
