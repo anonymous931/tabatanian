@@ -5,6 +5,8 @@ ja:
     logout: ログアウト
     message:
       require_login: 'ログインしてください'
+      register: "%{item}登録が成功しました"
+      not_register: "%{item}登録に失敗しました"
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"

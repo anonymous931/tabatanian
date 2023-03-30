@@ -46,6 +46,10 @@ Layout/HashAlignment:
   Exclude:
     - 'lib/tasks/auto_annotate_models.rake'
 
+Layout/ArgumentAlignment:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
+
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
 # AllowedMethods: refine

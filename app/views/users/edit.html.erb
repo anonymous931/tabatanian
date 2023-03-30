@@ -1,6 +1,91 @@
-<h1>Editing User</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <%= form_with model: @user do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-<%= render 'form', user: @user %>
+        <div class="row align-items-center mt-5">
+          <div class='mt-3 mb-3 col-auto'>
+            <%= image_tag @user.avatar.url,
+                          id: 'profile_img_prev',
+                          size: '100x100',
+                          class: "rounded-circle user-information_img" %>
+          </div>
+          <div class="form-group col-auto">
+            <%= f.label :avatar %>
+            <%= f.file_field :avatar, class: 'form-control mb-3', id: 'file_btn', accept: 'image/*' %>
+            <%= f.hidden_field :avatar_cache %>
+          </div>
+        </div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+        <div class="form-group mt-4">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <%= f.fields_for :profile, @user.profile do |ff| %>
+          <div class="form-group mt-3">
+            <%= ff.label :introduction %>
+            <%= ff.text_area :introduction, class: 'form-control' %>
+          </div>
+
+          <h3 class="text-center mt-5">目標設定</h3>
+          <div class="row mt-4">
+            <h4 class="col-6 text-center">現在</h4>
+            <h4 class="col-6 text-center">目標</h4>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-6">
+              <div class="row align-items-center justify-content-end mt-2">
+                <label class="col-auto">体重：</label>
+                <div class="col-5">
+                  <%= ff.number_field :weight, step: '0.1', class: 'form-control' %>
+                </div>
+                <div class="col-auto">kg</div>
+              </div>
+
+              <div class="row align-items-center justify-content-end mt-2">
+                <label class="col-auto">体脂肪率：</label>
+                <div class="col-5">
+                  <%= ff.number_field :fat, step: '0.1', class: 'form-control' %>
+                </div>
+                <div class="col-auto">kg</div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="row align-items-center justify-content-end mt-2">
+                <label class="col-auto">体重：</label>
+                <div class="col-5">
+                  <%= ff.number_field :target_weight, step: '0.1', class: 'form-control' %>
+                </div>
+                <div class="col-auto">kg</div>
+              </div>
+
+              <div class="row align-items-center justify-content-end mt-2">
+                <label class="col-auto">体脂肪率：</label>
+                <div class="col-5">
+                  <%= ff.number_field :target_fat, step: '0.1', class: 'form-control' %>
+                </div>
+                <div class="col-auto">kg</div>
+              </div>
+
+              <div class="row align-items-center justify-content-end mt-2">
+                <label class="col-auto">期限：</label>
+                <div class="col-6">
+                  <%= ff.date_field :deadline, class: 'form-control' %>
+                </div>
+                <div class="col-auto">kg</div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="actions text-center mt-4">
+          <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
