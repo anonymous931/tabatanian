@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[ show edit update ]
+  before_action :require_login, except: %i[ new create ]
   before_action :set_current_user, only: %i[ edit update ]
 
   # GET /users/1 or /users/1.json
