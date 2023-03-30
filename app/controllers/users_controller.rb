@@ -33,9 +33,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     if @user.update(user_params)
-      redirect_to root_url, success: t('defaults.message.created', item: Profile.model_name.human)
+      redirect_to user_path(@user), success: t('defaults.message.updated', item: Profile.model_name.human)
     else
-      flash.now[:danger] = t('defaults.message.not_created', item: Profile.model_name.human)
+      flash.now[:danger] = t('defaults.message.not_updated', item: Profile.model_name.human)
       render :edit
     end
   end

@@ -12,6 +12,7 @@
             <button type="button" class="btn btn-primary">プロフィールを編集</button>
           <% end %>
         <% end %>
+        <p class="mt-3">自己紹介：<%= @user.profile.try(:introduction) %></p>
       </div>
 
       <div class="row justify-content-between mt-5">

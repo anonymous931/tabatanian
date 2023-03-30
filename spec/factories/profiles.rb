@@ -29,6 +29,6 @@ FactoryBot.define do
     fat { 17.5 }
     target_weight { 55.0 }
     target_fat { 15.0 }
-    deadline { "2023-03-27" }
+    deadline { "002023-03-27" }
   end
 end
