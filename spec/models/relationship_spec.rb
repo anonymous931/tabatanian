@@ -22,5 +22,37 @@
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションの確認' do
+    context '入力値が正常' do
+      it '正常に登録される' do
+        relationship = build(:relationship)
+        expect(relationship).to be_valid
+        expect(relationship.errors).to be_empty
+      end
+    end
+
+    context 'follower_idがnil' do
+      it 'エラーになる' do
+        relationship = build(:relationship, follower_id: "")
+        expect(relationship).to be_invalid
+        expect(relationship.errors).not_to be_empty
+      end
+    end
+
+    context 'followed_idがnil' do
+      it 'エラーになる' do
+        relationship = build(:relationship, followed_id: "")
+        expect(relationship).to be_invalid
+        expect(relationship.errors).not_to be_empty
+      end
+    end
+
+    context 'follower_idとfollowed_idが同じ値' do
+      it 'エラーになる' do
+        relationship = build(:relationship, follower_id: 2)
+        expect(relationship).to be_invalid
+        expect(relationship.errors).not_to be_empty
+      end
+    end
+  end
 end
