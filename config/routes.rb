@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root 'menus#index'
+  resources :users do
+    resource :relationships, only: %i[ create destroy ] do
+      member do
+        get :follower
+        get :followed
+      end
+    end
+  end
+
   resources :menus
-  resources :users
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'

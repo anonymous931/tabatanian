@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :require_login, only: %i[ new edit create update destroy ]
+  before_action :require_login, except: %i[ index show ]
   before_action :set_menu, only: %i[ edit update destroy ]
 
   # GET /menus or /menus.json

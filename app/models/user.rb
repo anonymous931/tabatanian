@@ -23,6 +23,11 @@ class User < ApplicationRecord
   has_many :menus,   dependent: :destroy
   has_one  :profile, dependent: :destroy
 
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy, inverse_of: 'follower'
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy, inverse_of: 'followed'
+  has_many :followings, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   accepts_nested_attributes_for :profile, allow_destroy: true
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
@@ -36,5 +41,20 @@ class User < ApplicationRecord
 
   def self.ransackable_attributes(_auth_object = nil)
     %w(name)
+  end
+
+  # フォローする
+  def follow(user_id)
+    active_relationships.create(followed_id: user_id)
+  end
+
+  # フォローを外す
+  def unfollow(user_id)
+    active_relationships.find_by(followed_id: user_id).destroy
+  end
+
+  # すでにフォローしているのか確認
+  def following?(user)
+    followings.include?(user)
   end
 end

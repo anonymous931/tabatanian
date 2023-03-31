@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  before_action :require_login, except: %i[ new create destroy ]
   def new; end
 
   def create
