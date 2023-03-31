@@ -23,6 +23,7 @@ class Menu < ApplicationRecord
 
   belongs_to :user
   has_many :works, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
 
