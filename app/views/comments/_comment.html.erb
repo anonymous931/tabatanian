@@ -8,9 +8,11 @@
       <%= simple_format(comment.body) %>
     </div>
     <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
-      <textarea id="js-textarea-comment-<%= comment.id %>" class="form-control mb-1"><%= comment.body %></textarea>
-      <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-      <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
+      <%= form_with model: comment, url: comment_path(comment), id: 'update_comment', local: false do |ff| %>
+        <%= render 'shared/error_messages', object: ff.object %>
+        <%= ff.text_area :body, class: 'form-control mb-3', id: 'js-edit-comment-body' %>
+        <%= ff.submit '更新', class: 'btn btn-success' %>
+      <% end %>
     </div>
   </td>
 
@@ -18,14 +20,14 @@
     <td class="action pt-3">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
-          <a href="#" class='js-edit-comment-button' data-comment-id="<%= comment.id %>">
+          <button class='js-edit-comment-button' data-comment-id="<%= comment.id %>">
             <i class="fa-solid fa-pen" style="color: #1e2471;"></i>
-          </a>
+          </button>
         </li>
         <li class="list-inline-item">
-          <a href="#" class='js-delete-comment-button' data-comment-id="<%= comment.id %>">
+          <%= link_to comment_path(comment), class: 'js-delete-comment-button', method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true do %>
             <i class="fa-solid fa-trash" style="color: #1e2471;"></i>
-          </a>
+          <% end %>
         </li>
       </ul>
     </td>

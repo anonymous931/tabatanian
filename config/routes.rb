@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :menus do
-    resources :comments, only: %i[ create destroy ], shallow: true
+    resources :comments, only: %i[ create update destroy ], shallow: true
   end
 
   get 'login', to: 'user_sessions#new'
