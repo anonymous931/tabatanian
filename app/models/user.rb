@@ -58,8 +58,4 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
-  def own?(object)
-    id == object.user_id
-  end
 end

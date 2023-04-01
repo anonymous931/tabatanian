@@ -21,8 +21,8 @@
 #
 FactoryBot.define do
   factory :comment do
-    body { "MyText" }
-    user { nil }
-    board { nil }
+    sequence(:body) { |n| "本文#{n}" }
+    association :user
+    association :menu
   end
 end

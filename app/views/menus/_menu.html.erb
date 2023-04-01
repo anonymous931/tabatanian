@@ -10,7 +10,7 @@
             <%= menu.title %>
           <% end %>
         </h5>
-        <% if current_user.own?(menu) %>
+        <% if menu.user == current_user %>
           <div class='float-end'>
             <%= link_to edit_menu_path(menu.id) do %>
               <i class="fa-solid fa-pen" style="color: #1e2471;"></i>
