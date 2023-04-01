@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'menus#index'
+
   resources :users do
     resource :relationships, only: %i[ create destroy ] do
       member do
@@ -9,7 +10,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :menus
+  resources :menus do
+    resources :comments, only: %i[ create update destroy ], shallow: true
+  end
+
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'

@@ -13,7 +13,7 @@
       <%= @menu.content %>
     </p>
     <div class="row justify-content-center">
-      <div class="col-10">
+      <div class="col-10 col-lg-6">
         <%= render partial: 'work', collection: @works %>
       </div>
     </div>
@@ -24,4 +24,10 @@
       </div>
     <% end %>
   </div>
+
+  <!-- コメントフォーム -->
+  <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+
+  <!-- コメントエリア -->
+  <%= render 'comments/comments', { menu: @menu, comments: @comments } %>
 </div>

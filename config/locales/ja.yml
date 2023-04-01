@@ -6,6 +6,7 @@ ja:
       menu: メニュー
       profile: プロフィール
       work: ワーク
+      comment: コメント
     # User.human_attributes_name(:name)
     attributes:
       id: ID
@@ -29,6 +30,8 @@ ja:
         content: ワーク詳細
       profile:
         introduction: 自己紹介
+      comment:
+        body: コメント
 
   time:
     formats:
