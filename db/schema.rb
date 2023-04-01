@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 2023_03_31_131315) do
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.integer "user_id", null: false
-    t.integer "board_id", null: false
+    t.integer "menu_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["board_id"], name: "index_comments_on_board_id"
+    t.index ["menu_id"], name: "index_comments_on_menu_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2023_03_31_131315) do
     t.index ["menu_id"], name: "index_works_on_menu_id"
   end
 
-  add_foreign_key "comments", "boards"
+  add_foreign_key "comments", "menus"
   add_foreign_key "comments", "users"
   add_foreign_key "menus", "users"
   add_foreign_key "profiles", "users"

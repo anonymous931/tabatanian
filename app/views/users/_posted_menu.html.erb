@@ -3,7 +3,7 @@
     <%= link_to menu_path(posted_menu.id) do %>
       <h5 class="card-title"><%= posted_menu.title %></h5>
     <% end %>
-    <% if posted_menu.user == current_user %>
+    <% if current_user.own?(posted_menu) %>
       <div class="float-end">
         <%= link_to '編集', edit_menu_path(posted_menu.id), class: "card-link" %>
         <%= link_to '削除', menu_path(posted_menu), class: "card-link", method: :delete, data: { confirm: '本当に削除しますか？'} %>

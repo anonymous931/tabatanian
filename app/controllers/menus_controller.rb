@@ -12,6 +12,8 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
     @works = @menu.works
+    @comment = Comment.new
+    @comments = @menu.comments.includes(:user).order(created_at: :desc)
   end
 
   # GET /menus/new
