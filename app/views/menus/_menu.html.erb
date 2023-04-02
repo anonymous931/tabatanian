@@ -15,7 +15,7 @@
             <i class="fa-solid fa-user" style="color: #1e2471;"></i>
             <%= link_to menu.user.name, user_path(menu.user.id) %>
           </li>
-          <% if menu.user == current_user %>
+          <% if current_user&.decorate&.own?(menu) %>
             <%= render 'crud_menu', menu: menu %>
           <% else %>
             <%= render 'favorite_button', menu: menu %>

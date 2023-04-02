@@ -45,31 +45,4 @@ class User < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     %w(name)
   end
-
-  # フォローする
-  def follow(user_id)
-    active_relationships.create(followed_id: user_id)
-  end
-
-  # フォローを外す
-  def unfollow(user_id)
-    active_relationships.find_by(followed_id: user_id).destroy
-  end
-
-  # すでにフォローしているのか確認
-  def following?(user)
-    followings.include?(user)
-  end
-
-  def favorite(menu)
-    favorite_menus << menu
-  end
-
-  def unfavorite(menu)
-    favorite_menus.destroy(menu)
-  end
-
-  def favorite?(menu)
-    favorite_menus.include?(menu)
-  end
 end

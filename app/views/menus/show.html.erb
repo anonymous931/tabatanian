@@ -17,7 +17,7 @@
         <%= render partial: 'work', collection: @works %>
       </div>
     </div>
-    <% if @menu.user == current_user %>
+    <% if current_user&.decorate&.own?(@menu) %>
       <div class="float-end">
         <%= link_to '編集', edit_menu_path(@menu) %>
         <%= link_to '削除', menu_path(@menu), method: :delete, data: { confirm: '本当に削除しますか？'} %>
