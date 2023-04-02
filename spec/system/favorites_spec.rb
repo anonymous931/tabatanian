@@ -27,6 +27,16 @@ RSpec.describe "Favorites", type: :system do
         expect(user.favorites.count).to eq(0)
       end
 
+      it 'メニュー詳細画面でお気に入り登録、お気に入り解除ができる' do
+        visit menu_path(menu)
+        find('.favorite').click
+        expect(page).to have_selector '.unfavorite'
+        expect(user.favorites.count).to eq(1)
+        find('.unfavorite').click
+        expect(page).to have_selector '.favorite'
+        expect(user.favorites.count).to eq(0)
+      end
+
       it 'お気に入り一覧画面が正常に表示される' do
         visit root_path
         find('.favorite').click

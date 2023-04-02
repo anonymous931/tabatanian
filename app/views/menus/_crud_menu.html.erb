@@ -2,7 +2,7 @@
   <%= link_to edit_menu_path(menu.id) do %>
     <i class="fa-solid fa-pen" style="color: #1e2471;"></i>
   <% end %>
-  <%= link_to menu_path(menu.id), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+  <%= link_to menu_path(menu.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "delete" do %>
     <i class="fa-solid fa-trash" style="color: #1e2471;"></i>
   <% end %>
 </div>
