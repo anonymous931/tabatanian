@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+<div class="col-auto mb-3">
   <div id="menu-id-<%= menu.id %>">
     <div class="card">
       <%= link_to menu_path(menu.id) do %>
@@ -10,21 +10,16 @@
             <%= menu.title %>
           <% end %>
         </h5>
-        <% if menu.user == current_user %>
-          <div class='float-end'>
-            <%= link_to edit_menu_path(menu.id) do %>
-              <i class="fa-solid fa-pen" style="color: #1e2471;"></i>
-            <% end %>
-            <%= link_to menu_path(menu.id), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
-              <i class="fa-solid fa-trash" style="color: #1e2471;"></i>
-            <% end %>
-          </div>
-        <% end %>
-        <ul class="list-inline">
+        <ul class="list-inline mt-3 mb-1">
           <li class="list-inline-item">
             <i class="fa-solid fa-user" style="color: #1e2471;"></i>
             <%= link_to menu.user.name, user_path(menu.user.id) %>
           </li>
+          <% if menu.user == current_user %>
+            <%= render 'crud_menu', menu: menu %>
+          <% else %>
+            <%= render 'favorite_button', menu: menu %>
+          <% end %>
         </ul>
       </div>
     </div>
