@@ -2,12 +2,12 @@ class RelationshipsController < ApplicationController
   before_action :set_user, only: %i[ follower followed ]
 
   def create
-    current_user.follow(params[:user_id])
+    current_user.decorate.follow(params[:user_id])
     redirect_to request.referer
   end
 
   def destroy
-    current_user.unfollow(params[:user_id])
+    current_user.decorate.unfollow(params[:user_id])
     redirect_to request.referer
   end
 

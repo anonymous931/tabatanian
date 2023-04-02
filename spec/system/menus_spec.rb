@@ -132,7 +132,7 @@ RSpec.describe "Menu", type: :system do
 
       it 'メニューの削除が成功する' do
         visit menu_path(menu)
-        click_link '削除'
+        find('.delete').click
         expect(page.accept_confirm).to eq '本当に削除しますか？'
         expect(page).to have_content 'メニューを削除しました'
         expect(current_path).to eq menus_path

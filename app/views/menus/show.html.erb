@@ -1,9 +1,16 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col">
-      <h3>
+    <div class="col row justify-content-start">
+      <h3 class="col-auto">
         <%= @menu.title %>
       </h3>
+      <h5 class="col-auto mt-1">
+        <% if current_user&.decorate&.own?(@menu) %>
+          <%= render 'crud_menu', menu: @menu %>
+        <% else %>
+          <%= render 'favorite_button', menu: @menu %>
+        <% end %>
+      </h5>
     </div>
     <div class="col d-flex justify-content-end">
       <button type="button" class="btn btn-outline-success">トレーニング開始</button>
@@ -17,12 +24,6 @@
         <%= render partial: 'work', collection: @works %>
       </div>
     </div>
-    <% if @menu.user == current_user %>
-      <div class="float-end">
-        <%= link_to '編集', edit_menu_path(@menu) %>
-        <%= link_to '削除', menu_path(@menu), method: :delete, data: { confirm: '本当に削除しますか？'} %>
-      </div>
-    <% end %>
   </div>
 
   <!-- コメントフォーム -->

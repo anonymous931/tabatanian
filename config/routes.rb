@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 
   resources :menus do
     resources :comments, only: %i[ create update destroy ], shallow: true
+    collection do
+      get :favorites
+    end
   end
+
+  resources :favorites, only: %i[ create destroy ]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

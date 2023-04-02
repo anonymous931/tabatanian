@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_31_131315) do
+ActiveRecord::Schema.define(version: 2023_04_02_055716) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2023_03_31_131315) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["menu_id"], name: "index_comments_on_menu_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "menu_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_favorites_on_menu_id"
+    t.index ["user_id", "menu_id"], name: "index_favorites_on_user_id_and_menu_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -78,6 +88,8 @@ ActiveRecord::Schema.define(version: 2023_03_31_131315) do
 
   add_foreign_key "comments", "menus"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "menus"
+  add_foreign_key "favorites", "users"
   add_foreign_key "menus", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "relationships", "users", column: "followed_id"

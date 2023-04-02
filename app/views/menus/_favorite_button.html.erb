@@ -1,0 +1,7 @@
+<div class="float-end">
+  <% if current_user&.decorate&.favorite?(menu) %>
+    <%= render 'unfavorite', { menu: menu } %>
+  <% else %>
+    <%= render 'favorite', { menu: menu } %>
+  <% end %>
+</div>
