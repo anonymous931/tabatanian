@@ -1,3 +1,3 @@
-<%= link_to favorite_path(current_user.favorites.find_by(menu_id: menu.id)), id: "js-favorite-button-for-menu-#{menu.id}", method: :delete do %>
+<%= link_to favorite_path(current_user.favorites.find_by(menu_id: menu.id)), id: "js-favorite-button-for-menu-#{menu.id}", class: "unfavorite", method: :delete do %>
   <i class="fa-solid fa-star" style="color: #1e2471;"></i>
 <% end %>

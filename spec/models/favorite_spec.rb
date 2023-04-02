@@ -22,5 +22,37 @@
 require 'rails_helper'
 
 RSpec.describe Favorite, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションの確認' do
+    context '入力値が正常' do
+      it '正常に登録される' do
+        favorite = build(:favorite)
+        expect(favorite).to be_valid
+        expect(favorite.errors).to be_empty
+      end
+    end
+
+    context 'user_idがnil' do
+      it 'エラーになる' do
+        favorite = build(:favorite, user_id: "")
+        expect(favorite).to be_invalid
+        expect(favorite.errors).not_to be_empty
+      end
+    end
+
+    context 'menu_idがnil' do
+      it 'エラーになる' do
+        favorite = build(:favorite, menu_id: "")
+        expect(favorite).to be_invalid
+        expect(favorite.errors).not_to be_empty
+      end
+    end
+
+    context 'user_idとmenu_idが同じ値' do
+      it 'エラーになる' do
+        favorite = build(:favorite, user_id: 2)
+        expect(favorite).to be_invalid
+        expect(favorite.errors).not_to be_empty
+      end
+    end
+  end
 end
