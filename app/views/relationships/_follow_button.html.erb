@@ -1,0 +1,5 @@
+<% if current_user.decorate.following?(user) %>
+  <%= render 'relationships/not_follow', user: user %>
+<% else %>
+  <%= render 'relationships/follow', user: user %>
+<% end %>
