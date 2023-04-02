@@ -60,4 +60,16 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  def favorite(menu)
+    favorite_menus << menu
+  end
+
+  def unfavorite(menu)
+    favorite_menus.destroy(menu)
+  end
+
+  def favorite?(menu)
+    favorite_menus.include?(menu)
+  end
 end

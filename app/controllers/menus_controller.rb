@@ -52,6 +52,10 @@ class MenusController < ApplicationController
     redirect_to menus_path, success: t('defaults.message.delete', item: Menu.model_name.human)
   end
 
+  def favorites
+    @favorite_menus = current_user.favorite_menus.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

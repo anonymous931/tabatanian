@@ -7,6 +7,7 @@ ja:
       profile: プロフィール
       work: ワーク
       comment: コメント
+      favorite: お気に入り
     # User.human_attributes_name(:name)
     attributes:
       id: ID
