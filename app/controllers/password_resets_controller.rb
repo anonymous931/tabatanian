@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
 
     # 電子メールが見つかったかどうかに関係なく、ユーザーの指示が送信されたことをユーザーに伝えます。
     # これは、システムに存在する電子メールに関する情報を攻撃者に漏らさないためです。
-    redirect_to login_path, success: t('.success')
+    redirect_to login_path, success: 'メールを送信しました'
   end
 
   # パスワードのリセットフォーム画面へ遷移するアクション
@@ -38,9 +38,9 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     # 次の行は一時トークンをクリアし、パスワードを更新します
     if @user.change_password(params[:user][:password])
-      redirect_to login_path, success: t('.success')
+      redirect_to login_path, success: 'パスワードをリセットしました'
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[:danger] = 'パスワードのリセットに失敗しました'
       render :edit
     end
   end
