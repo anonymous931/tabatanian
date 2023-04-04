@@ -30,8 +30,16 @@ ja:
       title: メニュー作成
     show:
       title: メニュー詳細
-    bookmarks:
-      title: ブックマーク一覧
+    favorites:
+      title: お気に入り一覧
+  relationships:
+    follower:
+      title: フォロー一覧
   profiles:
     show:
       title: プロフィール
+  password_resets:
+    new:
+      title: パスワードリセット申請
+    edit:
+      title: パスワードリセット 
