@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   root 'menus#index'
 
   resources :users do
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: %i[ create destroy ]
+
+  resources :password_resets, only: %i[ new create edit update ]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

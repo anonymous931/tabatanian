@@ -11,12 +11,12 @@ class RelationshipsController < ApplicationController
 
   # フォローしている人一覧
   def follower
-    @users = @user.followings
+    @users = @user.followings.page(params[:page])
   end
 
   # フォローされている人一覧
   def followed
-    @users = @user.followers
+    @users = @user.followers.page(params[:page])
   end
 
   private
