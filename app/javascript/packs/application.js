@@ -14,7 +14,6 @@ import '@fortawesome/fontawesome-free/js/all';
 require("jquery")
 require("@nathanvda/cocoon")
 require("shared/preview")
-require("comments/comment_edit")
 
 Rails.start()
 Turbolinks.start()

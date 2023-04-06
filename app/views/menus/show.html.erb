@@ -13,7 +13,9 @@
       </h5>
     </div>
     <div class="col d-flex justify-content-end">
-      <button type="button" class="btn btn-outline-success">トレーニング開始</button>
+      <%= link_to timer_menu_path(@menu.id) do %>
+        <button type="button" class="btn btn-outline-success">トレーニング開始</button>
+      <% end %>
     </div>
     <p class="mt-4 mb-4">
       <strong>解説：</strong>
@@ -21,7 +23,7 @@
     </p>
     <div class="row justify-content-center">
       <div class="col-10 col-lg-6">
-        <%= render partial: 'work', collection: @works %>
+        <%= render partial: 'work', collection: @menu.works %>
       </div>
     </div>
   </div>
@@ -32,3 +34,4 @@
   <!-- コメントエリア -->
   <%= render 'comments/comments', { menu: @menu, comments: @comments } %>
 </div>
+<%= javascript_pack_tag 'comment_edit' %>

@@ -1,0 +1,106 @@
+<!-- page1 -->
+<div id="page1">
+  <div class="mContainer">
+    <!-- flex -->
+    <div class="d-flex flex-row justify-content-center">
+      <div class="p-2 areaStyle1 align-self-center flexFill">
+        <h5 class="textStyle1">ワークアウト</h5>
+        <div class="dropdown">
+
+          <!-- flex -->
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="p-2">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                20
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <% 7.times do |i| %>
+                  <a class="dropdown-item" value="<%= i * 5 + 10 %>"><%= i * 5 + 10 %></a>
+                <% end %>
+              </div>
+            </div>
+            <div class="p-2">
+              <p class="textStyle2 m-0">秒</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-2 areaStyle1 align-self-center flexFill">
+        <h5 class="textStyle1">インターバル</h5>
+        <div class="dropdown">
+
+          <!-- flex -->
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="p-2">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                10
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <% 6.times do |i| %>
+                  <a class="dropdown-item" value="<%= i * 5 + 5 %>"><%= i * 5 + 5 %></a>
+                <% end %>
+              </div>
+            </div>
+            <div class="p-2 align-self-center">
+              <p class="textStyle2 m-0">秒</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-2 areaStyle1 align-self-center flexFill">
+        <h5 class="textStyle1">セット数</h5>
+        <div class="dropdown">
+
+          <!-- flex -->
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="p-2">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                8
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                <% 5.times do |i| %>
+                  <a class="dropdown-item" value="<%= i * 4 + 4 %>"><%= i * 4 + 4 %></a>
+                <% end %>
+              </div>
+            </div>
+            <div class="p-2 align-self-center">
+              <p class="textStyle2 m-0">セット</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- button -->
+  <div class="text-center mt-4 mb-4">
+    <button id="startBtn" type="button" class="secBtn btn btn-outline-secondary">スタート</button>
+  </div>
+</div>
+
+<!-- page2 -->
+<div id="page2" class="displayNone">
+  <!-- カウントダウン -->
+  <div class="mContainer">
+    <div class="d-flex flex-column justify-content-center" style="height: 100%;">
+      <div class="p-2 align-self-center">
+        <h5 id="work">ワークアウト</h5>
+      </div>
+      <div class="p-2 row align-self-center align-items-end">
+        <p class="col-auto">残り</p>
+        <h1 class="col-auto" id="timer"></h1>
+        <p class="col-auto">秒</p>
+      </div>
+    </div>
+  </div>
+<!-- button -->
+  <div class="text-center mt-4 mb-4">
+    <button id="stopBtn" type="button" class="btn btn-outline-secondary">一時停止</button>
+    <button id="cancelBtn" type="button" class="btn btn-outline-secondary">キャンセル</button>
+  </div>
+</div>
