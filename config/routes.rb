@@ -14,9 +14,8 @@ Rails.application.routes.draw do
 
   resources :menus do
     resources :comments, only: %i[ create update destroy ], shallow: true
-    collection do
-      get :favorites
-    end
+    get :favorites, on: :collection
+    get :timer, on: :member
   end
 
   resources :favorites, only: %i[ create destroy ]

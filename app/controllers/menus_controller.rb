@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :require_login, except: %i[ index show ]
+  before_action :require_login, except: %i[ index show timer ]
   before_action :set_menu, only: %i[ edit update destroy ]
 
   # GET /menus or /menus.json
@@ -11,9 +11,12 @@ class MenusController < ApplicationController
   # GET /menus/1 or /menus/1.json
   def show
     @menu = Menu.find(params[:id])
-    @works = @menu.works
     @comment = Comment.new
     @comments = @menu.comments.includes(:user).order(created_at: :desc)
+  end
+
+  def timer
+    @menu = Menu.find(params[:id])
   end
 
   # GET /menus/new

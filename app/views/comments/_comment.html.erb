@@ -21,12 +21,12 @@
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
           <button class='js-edit-comment-button' data-comment-id="<%= comment.id %>">
-            <i class="fa-solid fa-pen" style="color: #1e2471;"></i>
+            <i class="fa-solid fa-pen fa-lg" style="color: #1e2471;"></i>
           </button>
         </li>
         <li class="list-inline-item">
           <%= link_to comment_path(comment), class: 'js-delete-comment-button', method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true do %>
-            <i class="fa-solid fa-trash" style="color: #1e2471;"></i>
+            <i class="fa-solid fa-trash fa-lg" style="color: #1e2471;"></i>
           <% end %>
         </li>
       </ul>
