@@ -4,6 +4,7 @@ const stopBtn = document.getElementById('stopBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const dropDown1 = document.getElementById('dropdownMenu1');
 const dropDown2 = document.getElementById('dropdownMenu2');
+const dropDown3 = document.getElementById('dropdownMenu3');
 const work_count = document.getElementById('work_count').value;
 const workText = document.getElementById('work');
 const timer = document.getElementById('timer');
@@ -12,8 +13,9 @@ let startTime;
 let timeoutId;
 let elapsedTime = 0;
 let count;
-let set;
-let current_set = 0;
+let set = 0;
+let total_work;
+let current_work = 0;
 let workFlg = false; // true = WORK  ,  false = INTERVAL
 let count1 = true;
 let count2 = true;
@@ -35,9 +37,9 @@ startBtn.addEventListener('click', () => {
   document.getElementById('page2').classList.remove("displayNone");
 
   workText.textContent = '準備してください';
-  set = parseInt(work_count) * 2 + 1;
-  if (document.getElementById("work_list_" + current_set).classList.length == 4) {
-    document.getElementById("work_list_" + current_set).click();
+  total_work = parseInt(work_count) * parseInt(dropDown3.textContent) * 2;
+  if (document.getElementById("work_list_" + current_work).classList.length == 4) {
+    document.getElementById("work_list_" + current_work).click();
   }
   startTime = Date.now();
   countDown();
@@ -67,7 +69,8 @@ cancelBtn.addEventListener('click', () => {
   count2 = true;
   count3 = true;
   elapsedTime = 0;
-  current_set = 0;
+  current_work = 0;
+  set = 0;
   workText.textContent = 'ワークアウト';
   stopBtn.textContent = '一時停止'
 
@@ -77,8 +80,10 @@ cancelBtn.addEventListener('click', () => {
 
 // カウントダウン用関数
 function countDown() {
-  if (current_set == 0) {
+  if (current_work + set == 0) {
     count = 10000
+  } else if (set == parseInt(dropDown3.textContent)) {
+    count = 100
   } else if (workFlg == true) {
     count = 1000 * parseInt(dropDown1.textContent);
   } else {
@@ -119,11 +124,11 @@ function countDown() {
     count2 = true;
     count3 = true;
     // 現在のセット数を1増やす
-    current_set ++;
+    current_work ++;
 
     // 終了サウンド
     document.getElementById( 'sound-file-decision4' ).play();
-    if (current_set == (set - 1)) {
+    if (set == parseInt(dropDown3.textContent)) {
       // page切り替え
       document.getElementById('page1').classList.remove("displayNone");
       document.getElementById('page2').classList.add("displayNone");
@@ -131,7 +136,8 @@ function countDown() {
       // 初期化
       elapsedTime = 0;
       s = 0;
-      current_set = 0;
+      current_work = 0;
+      set = 0;
       workText.textContent = 'ワークアウト';
       stopBtn.textContent = '一時停止'
 
@@ -140,7 +146,13 @@ function countDown() {
     } else if (workFlg == true) {
       workFlg = false;
       workText.textContent = 'インターバル';
-      document.getElementById("work_list_" + current_set).click();
+      if (current_work >= total_work / parseInt(dropDown3.textContent)) {
+        current_work = 0
+        document.getElementById("work_list_" + current_work).click();
+        set ++;
+      } else {
+        document.getElementById("work_list_" + current_work).click();
+      }
     } else {
       workFlg = true;
       workText.textContent = 'ワークアウト';
