@@ -4,7 +4,6 @@ const stopBtn = document.getElementById('stopBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const dropDown1 = document.getElementById('dropdownMenu1');
 const dropDown2 = document.getElementById('dropdownMenu2');
-const dropDown3 = document.getElementById('dropdownMenu3');
 const work_count = document.getElementById('work_count').value;
 const workText = document.getElementById('work');
 const timer = document.getElementById('timer');
@@ -36,7 +35,7 @@ startBtn.addEventListener('click', () => {
   document.getElementById('page2').classList.remove("displayNone");
 
   workText.textContent = '準備してください';
-  set = parseInt(work_count) * parseInt(dropDown3.textContent) * 2 + 1;
+  set = parseInt(work_count) * 2 + 1;
   if (document.getElementById("work_list_" + current_set).classList.length == 4) {
     document.getElementById("work_list_" + current_set).click();
   }
@@ -78,7 +77,9 @@ cancelBtn.addEventListener('click', () => {
 
 // カウントダウン用関数
 function countDown() {
-  if (workFlg == true) {
+  if (current_set == 0) {
+    count = 10000
+  } else if (workFlg == true) {
     count = 1000 * parseInt(dropDown1.textContent);
   } else {
     count = 1000 * parseInt(dropDown2.textContent);
@@ -122,7 +123,7 @@ function countDown() {
 
     // 終了サウンド
     document.getElementById( 'sound-file-decision4' ).play();
-    if (current_set == set) {
+    if (current_set == (set - 1)) {
       // page切り替え
       document.getElementById('page1').classList.remove("displayNone");
       document.getElementById('page2').classList.add("displayNone");
