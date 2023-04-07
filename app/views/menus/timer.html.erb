@@ -10,6 +10,7 @@
     </div>
   </div>
 </div>
+<input type="hidden" id="work_count" value="<%= @menu.works.count %>">
 <%= audio_tag "decision1.mp3", id: "sound-file-decision1" %>
 <%= audio_tag "decision4.mp3", id: "sound-file-decision4" %>
 <%= javascript_pack_tag 'timer' %>
