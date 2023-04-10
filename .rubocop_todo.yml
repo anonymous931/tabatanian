@@ -81,6 +81,10 @@ Style/RedundantFetchBlock:
   Exclude:
     - 'config/puma.rb'
 
+Style/SafeNavigation:
+  Exclude:
+    - 'app/models/ability.rb'
+
 # Offense count: 37
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
