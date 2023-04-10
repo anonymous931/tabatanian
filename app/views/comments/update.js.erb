@@ -1,6 +1,6 @@
 $("#error_messages").remove()
 <% if @comment.errors.present? %>
-  $("#update_comment").prepend("<%= j(render('shared/error_messages', object: @comment)) %>")
+  $("#new_comment").prepend("<%= j(render('shared/error_messages', object: @comment)) %>")
 <% else %>
   $("tr#comment-<%= @comment.id %>").remove()
   $("#js-table-comment").prepend("<%= j(render('comments/comment', comment: @comment)) %>")
