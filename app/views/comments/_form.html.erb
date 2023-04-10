@@ -1,10 +1,14 @@
 <div class="row mb-3 mt-5">
   <div class="col">
-    <%= form_with model: comment, url: [menu, comment], id: 'new_comment', local: false do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :body %>
-      <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: 'ここにコメントを入力する' %>
-      <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+    <% if logged_in? %>
+      <%= form_with model: comment, url: [menu, comment], id: 'new_comment', local: false do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :body %>
+        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: 'ここにコメントを入力する' %>
+        <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <h4 class="text-center alert alert-secondary">コメントするにはログインしてください</h4>
     <% end %>
   </div>
 </div>
