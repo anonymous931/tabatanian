@@ -1,9 +1,11 @@
 <footer class="footer mt-auto py-3 bg-dark">
-  <div class="container mt-3">
+  <div class="container mt-3 d-flex align-items-center">
+    <%= link_to root_path do %>
+      <%= image_tag 'tabatanian_logo.png', class: 'rounded-circle me-2', size: '80x80' %>
+    <% end %>
     <ul class="md-flex">
-      <li><%= link_to 'このサイトについて', '#', class: "text-light" %></li>
       <li><%= link_to '利用規約', terms_path, class: "text-light" %></li>
-      <li><%= link_to 'プライバシーポリシー', '#', class: "text-light" %></li>
+      <li><%= link_to 'プライバシーポリシー', policy_path, class: "text-light" %></li>
     </ul>
   </div>
 </footer>
