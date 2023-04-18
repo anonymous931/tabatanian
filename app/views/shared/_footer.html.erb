@@ -1,0 +1,15 @@
+<footer class="footer mt-auto py-3 bg-dark">
+  <div class="container mt-3">
+    <div>
+      <%= link_to root_path, class: "text-light navbar-brand" do %>
+        <h4>たばたにあん</h4>
+      <% end %>
+    </div>
+    <ul class="md-flex my-4">
+      <li><%= link_to '利用規約', terms_path, class: "text-light" %></li>
+      <li><%= link_to 'プライバシーポリシー', policy_path, class: "text-light" %></li>
+      <li><%= link_to 'お問い合せ先', "https://twitter.com/tabatanian", class: "text-light", target: "_blank" %></li>
+    </ul>
+    <p class="text-light my-0">© 2023 tabatanian</p>
+  </div>
+</footer>

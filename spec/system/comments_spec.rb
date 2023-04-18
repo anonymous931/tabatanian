@@ -42,12 +42,38 @@ RSpec.describe "Comments", type: :system do
     end
 
     describe 'コメントの編集' do
-      context '他人のコメントの場合' do
+      describe '他人のコメントの場合' do
         it '編集ボタン・削除ボタンが表示されないこと' do
           visit menu_path(menu)
           within("#comment-#{comment_by_others.id}") do
             expect(page).not_to have_selector('.js-edit-comment-button')
             expect(page).not_to have_selector('.js-delete-comment-button')
+          end
+        end
+      end
+
+      describe '自分のコメントの場合'do
+        context '入力値が正常' do
+          it 'コメントの編集に成功する' do
+            visit menu_path(menu)
+            within("#comment-#{comment_by_me.id}") do
+              find('.js-edit-comment-button').click
+              fill_in 'comment[body]', with: 'test'
+              click_button '更新'
+              expect(page).to have_content('test')
+            end
+          end
+        end
+
+        context 'コメントが空欄' do
+          it 'コメントの編集に失敗する' do
+            visit menu_path(menu)
+            within("#comment-#{comment_by_me.id}") do
+              find('.js-edit-comment-button').click
+              fill_in 'comment[body]', with: ''
+              click_button '更新'
+            end
+            expect(page).to have_content('コメントを入力してください')
           end
         end
       end

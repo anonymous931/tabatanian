@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+html,body {
+  height: 100%;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
