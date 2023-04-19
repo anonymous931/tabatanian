@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card my-3 col-auto">
   <div class="card-body row justify-content-between">
     <div class="col-auto">
       <%= link_to user_path(follow_user.id) do %>
@@ -7,9 +7,7 @@
       <%= link_to follow_user.name, user_path(follow_user.id) %>
     </div>
     <div class="col-auto d-flex align-items-center">
-      <% if current_user != follow_user %>
-        <%= render 'follow_button', user: follow_user %>
-      <% end %>
+      <%= render 'follow_button', user: follow_user %>
     </div>
   </div>
 </div>

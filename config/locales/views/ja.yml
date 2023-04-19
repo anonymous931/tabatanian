@@ -32,6 +32,8 @@ ja:
       title: メニュー詳細
     favorites:
       title: お気に入り一覧
+    edit:
+      title: メニュー編集
   relationships:
     follower:
       title: フォロー一覧

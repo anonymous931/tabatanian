@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-4">
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
       <%= form_with model: menu do |f| %>
@@ -25,19 +25,10 @@
                         size: '300x200' %>
         </div>
 
-        <div class="details">
-
-          <hr>
-          <%# フォームを追加する場所。%>
-          <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
-          <div id="work-forms">
-            <%= f.fields_for :works do |work| %>
-              <% render 'work_fields', work: work %>
-            <% end %>
-          </div>
-          <%# トラックの追加フォームをするボタン %>
-          <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
-          <%= link_to_add_association 'ワークの追加',
+        
+        <%# トラックの追加フォームをするボタン %>
+        <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
+        <%= link_to_add_association 'ワークの追加',
                                       # form_withのformタグ変数
                                       f,
                                       # フォームのデータを追加するモデル名
@@ -49,7 +40,7 @@
                                         # フォームを追加する場所の指定
                                         association_insertion_node: '#work-forms',
                                         # フォームを前後どの位置に追加するか。(初期値: before)
-                                        association_insertion_method: 'after'
+                                        association_insertion_method: 'before'
                                       },
                                       # フォームオブジェクトを指定する場合(初期値 : f)
                                       form_name: 'work',
@@ -60,7 +51,17 @@
                                           # 通常の部分テンプレートと同じ記述
                                         }
                                       }
-          %>
+                                      %>
+
+        <div class="details mt-5">
+          <hr>
+          <%# フォームを追加する場所。%>
+          <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
+          <div id="work-forms">
+            <%= f.fields_for :works do |work| %>
+              <% render 'work_fields', work: work %>
+            <% end %>
+          </div>
         </div>
 
         <div class="actions">
