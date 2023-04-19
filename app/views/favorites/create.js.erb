@@ -1,1 +1,2 @@
 $("#js-favorite-button-for-menu-<%= @menu.id %>").replaceWith("<%= j(render('menus/unfavorite', menu: @menu)) %>");
+$("#js_favorite_count_<%= @menu.id %>").text("<%= @menu.favorites.count %>");
