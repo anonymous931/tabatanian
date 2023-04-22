@@ -38,7 +38,7 @@
           <div class="row mt-3">
             <div class="col-6">
               <div class="row align-items-center justify-content-end mt-2">
-                <label class="col-auto">体重：</label>
+                <label class="col-auto">体重</label>
                 <div class="col-5">
                   <%= ff.number_field :weight, step: '0.1', class: 'form-control' %>
                 </div>
@@ -46,17 +46,17 @@
               </div>
 
               <div class="row align-items-center justify-content-end mt-2">
-                <label class="col-auto">体脂肪率：</label>
+                <label class="col-auto">体脂肪率</label>
                 <div class="col-5">
                   <%= ff.number_field :fat, step: '0.1', class: 'form-control' %>
                 </div>
-                <div class="col-auto">kg</div>
+                <div class="col-auto">%</div>
               </div>
             </div>
 
             <div class="col-6">
               <div class="row align-items-center justify-content-end mt-2">
-                <label class="col-auto">体重：</label>
+                <label class="col-auto">体重</label>
                 <div class="col-5">
                   <%= ff.number_field :target_weight, step: '0.1', class: 'form-control' %>
                 </div>
@@ -64,19 +64,19 @@
               </div>
 
               <div class="row align-items-center justify-content-end mt-2">
-                <label class="col-auto">体脂肪率：</label>
+                <label class="col-auto">体脂肪率</label>
                 <div class="col-5">
                   <%= ff.number_field :target_fat, step: '0.1', class: 'form-control' %>
                 </div>
-                <div class="col-auto">kg</div>
+                <div class="col-auto">%</div>
               </div>
 
               <div class="row align-items-center justify-content-end mt-2">
-                <label class="col-auto">期限：</label>
+                <label class="col-auto">期限</label>
                 <div class="col-6">
                   <%= ff.date_field :deadline, class: 'form-control' %>
                 </div>
-                <div class="col-auto">kg</div>
+                <div class="col-auto"></div>
               </div>
             </div>
           </div>

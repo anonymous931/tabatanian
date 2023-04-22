@@ -5,5 +5,4 @@ $("#error_messages").remove()
   $("tr#comment-<%= @comment.id %>").remove()
   $("#js-table-comment").prepend("<%= j(render('comments/comment', comment: @comment)) %>")
   $("#js-update-comment-body").val('')
-  location.reload();
 <% end %>

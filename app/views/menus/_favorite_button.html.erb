@@ -1,7 +1,9 @@
-<div class="float-end">
+<div class="float-end" id="favorite_area_<%= menu.id %>">
   <% if current_user&.decorate&.favorite?(menu) %>
     <%= render 'unfavorite', { menu: menu } %>
+    <h5 class="float-end" id="js_favorite_count_<%= menu.id %>"><%= menu.favorites.count %></h5>
   <% else %>
     <%= render 'favorite', { menu: menu } %>
+    <h5 class="float-end" id="js_favorite_count_<%= menu.id %>"><%= menu.favorites.count %></h5>
   <% end %>
 </div>

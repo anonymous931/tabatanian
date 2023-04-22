@@ -8,7 +8,7 @@ RSpec.describe 'メニュー', type: :system do
     context 'ログインしている場合' do
       it 'タイトルロゴからメニュー一覧へ遷移できること' do
         login_as(user)
-        click_on('たばたにあん')
+        click_on('たばたにあん', match: :first)
         expect(current_path).to eq(root_path)
       end
 
