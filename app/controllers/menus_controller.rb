@@ -4,8 +4,25 @@ class MenusController < ApplicationController
 
   # GET /menus or /menus.json
   def index
-    @q = Menu.ransack(params[:q])
-    @menus = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @q = Menu.includes(:user).joins(%|
+      LEFT OUTER JOIN (
+        SELECT
+          `favorites`.`menu_id` AS menu_id,
+          COUNT(*) AS favorite_count
+        FROM
+          `favorites`
+        GROUP BY
+          `favorites`.`menu_id`
+      ) AS menu_favorite_count
+      ON menus.id = menu_favorite_count.menu_id
+    |).ransack(params[:q])
+
+    @menus = case params[:sort]
+             when 'fav'
+               @q.result(distinct: true).order(favorite_count: :desc).page(params[:page])
+             else
+               @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+             end
   end
 
   # GET /menus/1 or /menus/1.json
