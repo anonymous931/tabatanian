@@ -1,10 +1,10 @@
 <div class="card my-3 col-auto">
   <div class="card-body row justify-content-between">
     <div class="col-auto">
-      <%= link_to user_path(follow_user.id) do %>
+      <%= link_to user_path(follow_user.id), class: 'link' do %>
         <%= image_tag follow_user.avatar.url, size: '50x50', class: "rounded-circle user-information_img" %>
       <% end %>
-      <%= link_to follow_user.name, user_path(follow_user.id) %>
+      <%= link_to follow_user.name, user_path(follow_user.id), class: 'link' %>
     </div>
     <div class="col-auto d-flex align-items-center">
       <%= render 'follow_button', user: follow_user %>

@@ -6,14 +6,14 @@
       <% end %>
       <div class="card-body">
         <h5 class="card-title">
-          <%= link_to menu_path(menu.id), class: "text-wrap" do %>
+          <%= link_to menu_path(menu.id), class: "text-wrap link" do %>
             <%= menu.title %>
           <% end %>
         </h6>
         <ul class="list-inline mt-3 mb-1">
           <li class="list-inline-item">
             <i class="fa-solid fa-user fa-lg" style="color: #1e2471;"></i>
-            <%= link_to menu.user.name, user_path(menu.user.id) %>
+            <%= link_to menu.user.name, user_path(menu.user.id), class: 'link' %>
           </li>
           <% if current_user&.decorate&.own?(menu) %>
             <%= render 'crud_menu', menu: menu %>
