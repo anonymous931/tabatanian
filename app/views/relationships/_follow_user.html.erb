@@ -1,13 +1,19 @@
 <div class="card my-3 col-auto">
-  <div class="card-body row justify-content-between">
+  <div class="card-body row">
     <div class="col-auto">
-      <%= link_to user_path(follow_user.id), class: 'link' do %>
+      <%= link_to user_path(follow_user.id), class: 'link', style: "width: 60px"  do %>
         <%= image_tag follow_user.avatar.url, size: '50x50', class: "rounded-circle user-information_img" %>
       <% end %>
       <%= link_to follow_user.name, user_path(follow_user.id), class: 'link' %>
     </div>
-    <div class="col-auto d-flex align-items-center">
+    <div class="col-auto ms-auto d-flex align-items-center">
       <%= render 'follow_button', user: follow_user %>
+    </div>
+  </div>
+  <div class="row">
+    <div style="width: 70px"></div>
+    <div class="col-auto">
+      <%= simple_format(follow_user.profile.introduction) if follow_user.profile.try(:introduction) %>
     </div>
   </div>
 </div>
