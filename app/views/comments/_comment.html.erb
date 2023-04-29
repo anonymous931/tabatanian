@@ -17,7 +17,7 @@
   </td>
 
   <% if current_user&.decorate&.own?(comment) %>
-    <td class="action pt-3">
+    <td style="width: 80px" class="action pt-3">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
           <button class='js-edit-comment-button' data-comment-id="<%= comment.id %>">
@@ -31,5 +31,7 @@
         </li>
       </ul>
     </td>
+  <% else %>
+    <td style="width: 80px;"></td>
   <% end %>
 </tr>
