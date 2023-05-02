@@ -32,6 +32,7 @@ gem 'ransack'
 gem 'cocoon'
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
+gem 'dotenv-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
