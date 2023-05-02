@@ -2,7 +2,7 @@
   "name": "tabatanian",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.3.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^6.0.0",
@@ -20,7 +20,5 @@
   "devDependencies": {
     "webpack-dev-server": "^3"
   },
-  "resolutions": {
-    "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
-  }
+  "packageManager": "yarn@1.22.18"
 }

@@ -32,6 +32,7 @@ gem 'ransack'
 gem 'cocoon'
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
+gem 'dotenv-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -77,3 +78,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg'
 end
+gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "redis", "~> 5.0"
