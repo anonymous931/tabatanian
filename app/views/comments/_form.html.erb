@@ -4,7 +4,7 @@
       <%= form_with model: comment, url: [menu, comment], id: 'new_comment', local: false do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :body %>
-        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: 'ここにコメントを入力する' %>
+        <%= f.text_area :body, class: 'form-control my-3', id: 'js-new-comment-body', row: 4, placeholder: 'ここにコメントを入力する' %>
         <%= f.submit 'コメントする', class: 'btn btn-primary' %>
       <% end %>
     <% else %>

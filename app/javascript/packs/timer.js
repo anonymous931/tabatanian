@@ -16,6 +16,7 @@ let count;
 let set = 0;
 let total_work;
 let current_work = 0;
+let before_work;
 let workFlg = false; // true = WORK  ,  false = INTERVAL
 let count1 = true;
 let count2 = true;
@@ -38,9 +39,12 @@ startBtn.addEventListener('click', () => {
 
   workText.textContent = '準備してください';
   total_work = parseInt(work_count) * parseInt(dropDown3.textContent) * 2;
-  if (document.getElementById("work_list_" + current_work).classList.length == 4) {
+  if (!document.getElementsByClassName('accordion-button py-4 border bg-info')[0]) {
+    document.getElementById("work_list_" + current_work).classList.add("bg-info");
+  };
+  if (document.getElementById("work_list_" + current_work).classList.contains("collapsed")) {
     document.getElementById("work_list_" + current_work).click();
-  }
+  };
   startTime = Date.now();
   countDown();
 });
@@ -50,9 +54,9 @@ stopBtn.addEventListener('click', () => {
   if (stopBtn.textContent == '一時停止') {
     clearTimeout(timeoutId);
     elapsedTime += startTime - Date.now();
-    stopBtn.textContent = 'スタート'
+    stopBtn.textContent = 'スタート';
   } else {
-    stopBtn.textContent = '一時停止'
+    stopBtn.textContent = '一時停止';
     startTime = Date.now();
     countDown();
   }
@@ -72,18 +76,19 @@ cancelBtn.addEventListener('click', () => {
   current_work = 0;
   set = 0;
   workText.textContent = 'ワークアウト';
-  stopBtn.textContent = '一時停止'
+  stopBtn.textContent = '一時停止';
 
   clearTimeout(timeoutId);
   workFlg = false;
+  document.getElementsByClassName('accordion-button py-4 border bg-info')[0].classList.remove("bg-info");
 });
 
 // カウントダウン用関数
 function countDown() {
   if (current_work + set == 0) {
-    count = 10000
+    count = 10000;
   } else if (set == parseInt(dropDown3.textContent)) {
-    count = 100
+    count = 100;
   } else if (workFlg == true) {
     count = 1000 * parseInt(dropDown1.textContent);
   } else {
@@ -114,6 +119,10 @@ function countDown() {
     }
   }
 
+  timeoutId = setTimeout(() => {
+    countDown();
+  }, 10);
+
   // カウントが０になった時の処理
   if (s == '00') {
     // 初期化処理
@@ -125,6 +134,7 @@ function countDown() {
     count3 = true;
     // 現在のセット数を1増やす
     current_work ++;
+    before_work = current_work - 2;
 
     // 終了サウンド
     document.getElementById( 'sound-file-decision4' ).play();
@@ -134,8 +144,8 @@ function countDown() {
       document.getElementById('page2').classList.add("displayNone");
 
       // 初期化
+      document.getElementsByClassName('accordion-button py-4 border bg-info')[0].classList.remove("bg-info");
       elapsedTime = 0;
-      s = 0;
       current_work = 0;
       set = 0;
       workText.textContent = 'ワークアウト';
@@ -147,19 +157,29 @@ function countDown() {
       workFlg = false;
       workText.textContent = 'インターバル';
       if (current_work >= total_work / parseInt(dropDown3.textContent)) {
-        current_work = 0
-        document.getElementById("work_list_" + current_work).click();
+        document.getElementById("work_list_" + before_work).classList.remove("bg-info");
+        if (!document.getElementById("work_list_" + before_work).classList.contains("collapsed")) {
+          document.getElementById("work_list_" + before_work).click();
+        }
+        current_work = 0;
+        document.getElementById("work_list_" + current_work).classList.add("bg-info");
+        if (document.getElementById("work_list_" + current_work).classList.contains("collapsed")) {
+          document.getElementById("work_list_" + current_work).click();
+        }
         set ++;
       } else {
-        document.getElementById("work_list_" + current_work).click();
+        document.getElementById("work_list_" + before_work).classList.remove("bg-info");
+        if (!document.getElementById("work_list_" + before_work).classList.contains("collapsed")) {
+          document.getElementById("work_list_" + before_work).click();
+        }
+        document.getElementById("work_list_" + current_work).classList.add("bg-info");
+        if (document.getElementById("work_list_" + current_work).classList.contains("collapsed")) {
+          document.getElementById("work_list_" + current_work).click();
+        }
       }
     } else {
       workFlg = true;
       workText.textContent = 'ワークアウト';
     }
   }
-
-  timeoutId = setTimeout(() => {
-    countDown();
-  }, 10);
 }
