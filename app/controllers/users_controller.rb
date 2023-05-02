@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_url, success: t('defaults.message.register', item: User.model_name.human)
+      redirect_to login_url, success: t('defaults.message.register', item: User.model_name.human)
     else
       flash.now[:danger] = t('defaults.message.not_register', item: User.model_name.human)
       render :new

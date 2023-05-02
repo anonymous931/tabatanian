@@ -4,9 +4,10 @@ class MenusController < ApplicationController
 
   # GET /menus or /menus.json
   def index
-    if params[:sort] == 'fav'
-      @q = Menu.joins(:favorites).group(:menu_id).order('count(menu_id) desc').ransack(params[:q])
-      @menus = @q.result(distinct: true).includes(:user).page(params[:page])
+    case params[:sort]
+    when 'fav'
+      @q = Menu.joins(:favorites).group(:id).order('count(menu_id) desc').ransack(params[:q])
+      @menus = @q.result.includes(:user).page(params[:page])
     else
       @q = Menu.ransack(params[:q])
       @menus = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
