@@ -74,3 +74,6 @@ Metrics/AbcSize:
 # classの直後に空白行を挿入してもよい
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
+
+Layout/FirstHashElementIndentation:
+  Enabled: false
