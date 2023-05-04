@@ -36,6 +36,8 @@ startBtn.addEventListener('click', () => {
   // page切り替え
   document.getElementById('page1').classList.add("displayNone");
   document.getElementById('page2').classList.remove("displayNone");
+  document.getElementById( 'sound-file-decision1' ).load();
+  document.getElementById( 'sound-file-decision4' ).load();
 
   workText.textContent = '準備してください';
   total_work = parseInt(work_count) * parseInt(dropDown3.textContent) * 2;

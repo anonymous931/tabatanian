@@ -4,7 +4,7 @@
     <!-- flex -->
     <div class="d-flex flex-row justify-content-center">
       <div class="p-2 areaStyle1 align-self-center flexFill">
-        <h5 class="textStyle1">ワークアウト</h5>
+        <h6 class="textStyle1">ワークアウト</h6>
         <div class="dropdown">
 
           <!-- flex -->
@@ -28,7 +28,7 @@
       </div>
 
       <div class="p-2 areaStyle1 align-self-center flexFill">
-        <h5 class="textStyle1">インターバル</h5>
+        <h6 class="textStyle1">インターバル</h6>
         <div class="dropdown">
 
           <!-- flex -->
@@ -52,7 +52,7 @@
       </div>
 
       <div class="p-2 areaStyle1 align-self-center flexFill">
-        <h5 class="textStyle1">セット数</h5>
+        <h6 class="textStyle1">セット数</h6>
         <div class="dropdown">
 
           <!-- flex -->
@@ -60,16 +60,13 @@
             <div class="p-2">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                1
+                2
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                <% 4.times do |i| %>
+                <% 8.times do |i| %>
                   <a class="dropdown-item" value="<%= i + 1 %>"><%= i + 1 %></a>
                 <% end %>
               </div>
-            </div>
-            <div class="p-2 align-self-center">
-              <p class="textStyle2 m-0">セット</p>
             </div>
           </div>
         </div>
