@@ -8,7 +8,7 @@
     </h2>
     <div id="collapse-<%= work.id %>" class="accordion-collapse collapse border" aria-labelledby="heading-<%= work.id %>" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        詳細：<%= work.content %>
+        <%= auto_link(simple_format(h(work.content)), html: { target: '_blank' }) %>
       </div>
     </div>
   </div>
