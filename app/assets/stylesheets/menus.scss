@@ -5,3 +5,38 @@
 .card {
   width: 300px;
 }
+
+.c-modal {
+  background-color: #eeeeee;
+  border-radius: 4px;
+  z-index: 30;
+}
+
+.c-modal__text {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.c-modal__btn {
+  background-color: #cfcfcf;
+  border-radius: 0 0 4px 4px;
+  padding: 12px 40px;
+}
+
+.c-btn {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  display: block;
+  margin: auto;
+  padding: 12px 40px;
+}
+
+.l-modal {
+  left: 50%;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
