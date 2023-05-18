@@ -23,6 +23,8 @@ class MenusController < ApplicationController
 
   def timer
     @menu = Menu.find(params[:id])
+    @current_worker = ActionCable.server.connections.length
+    ActionCable.server.broadcast('timer_channel', { content: @current_worker })
   end
 
   # GET /menus/new
