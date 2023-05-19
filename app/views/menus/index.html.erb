@@ -1,4 +1,20 @@
 <div class="container pt-3">
+  <div id="modal" class="c-modal l-modal" style="display: none">
+    <div class="c-modal__text">
+      <h3>このサイトについて</h3>
+      <hr>
+      <div class="my-5">
+        <p>たばたにあんは、タバタトレーニングのサポートをするサイトです。</p>
+        <p>メニュー詳細ページからトレーニング開始を押すと、すぐにタバタトレーニングができます。</p>
+        <p>トレーニングメニューの投稿もできるので、自分用のメニューをトレーニングすることもできます。</p>
+        <p>お気に入りのメニューを登録して、運動を習慣にしていきましょう！</p>
+        <%= link_to 'タバタトレーニングの詳細はこちら', about_path, class: "sessionStore" %>
+      </div>
+    </div>
+    <div class="c-modal__btn">
+      <button id="btn" class="c-btn">OK</button>
+    </div>
+  </div>
   <div class="row justify-content-center">
     <div class="col-8 offset-1">
       <!-- 検索フォーム -->
@@ -31,3 +47,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'description' %>
