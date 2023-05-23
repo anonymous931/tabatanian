@@ -8,4 +8,9 @@ class TimerChannel < ApplicationCable::Channel
     @current_worker = ActionCable.server.connections.length
     ActionCable.server.broadcast('timer_channel', { content: @current_worker })
   end
+
+  def receive
+    @current_worker = ActionCable.server.connections.length
+    ActionCable.server.broadcast('timer_channel', { content: @current_worker })
+  end
 end
