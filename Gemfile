@@ -35,6 +35,7 @@ gem 'cancancan'
 gem 'dotenv-rails'
 gem 'rails_autolink'
 gem 'fog-aws'
+gem 'config'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
